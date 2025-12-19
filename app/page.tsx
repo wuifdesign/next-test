@@ -1,21 +1,7 @@
 import Image from "next/image";
 
-type CloudflareRequestInit = RequestInit & {
-  cf?: {
-    cacheTtl?: number
-    cacheEverything?: boolean
-    cacheKey?: string
-  }
-}
-
-
 export default async function Home() {
-  const data = await fetch('https://dummyjson.com/quotes/random', {
-    cf: {
-      cacheTtl: 10,
-      cacheEverything: true,
-    },
-  } as CloudflareRequestInit)
+  const data = await fetch('https://dummyjson.com/quotes/random')
   const quote = await data.json()
 
   return (
