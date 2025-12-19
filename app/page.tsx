@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 export default async function Home() {
-  const data = await fetch('https://dummyjson.com/quotes/random')
+  const data = await fetch('https://dummyjson.com/quotes/random', { next: { revalidate: 10 } })
   const quote = await data.json()
 
   return (
